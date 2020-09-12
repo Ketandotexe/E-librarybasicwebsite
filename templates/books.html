@@ -1,0 +1,73 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#imglogo1
+{
+	background-color:white;
+	opacity:0.35;
+	width:25%;
+	height:20%;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
+mark { 
+  background-color: #dddddd;
+  color: black;
+}
+</style>
+</head>
+<body background="{{url_for('static',filename='library7.jpg')}}">
+<div id="imglogo1"><img src="{{url_for('static',filename='elibrary1-logo.png')}}" align="center" alt="Smiley face" ></div><br><br><br><br><br>
+<form align="center">
+<h1 align="center"><mark> Select book </mark></h1><br>
+<table>
+  <tr>
+    <th>Book Name</th>
+    <th>View</th>
+    <th>Buy</th>
+  </tr>
+  {% set c = [1] %}
+  {% for rows in rows %}
+  <tr>
+    <td>{{rows["name"]}}</td>
+	{% if  c[0] == 1 %}
+		<td><button formaction="/view1">View</button></td>
+		<td><button formaction="/payment1">Buy</button></td>
+		{% if c.append(c.pop(0) + 1) %}{% endif %}
+	{% elif c[0] == 2 %}
+		<td><button formaction="/view2">View</button></td>
+		<td><button formaction="/payment2">Buy</button></td>
+		{% if c.append(c.pop(0) + 1) %}{% endif %}
+	{% elif c[0] == 3 %}
+		<td><button formaction="/view3">View</button></td>
+		<td><button formaction="/payment3">Buy</button></td>
+		{% if c.append(c.pop(0) + 1) %}{% endif %}
+	{% else %}
+		<td><button formaction="/view4">View</button></td>
+		<td><button formaction="/payment4">Buy</button></td>
+	{% endif %}
+  </tr>
+  {% endfor %}
+  </table>
+</form>
+</body>
+</html>

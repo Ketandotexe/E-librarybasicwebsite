@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> 
+input[type=text] {
+  width: 500px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color:whi;
+  background-position: 10px 10px; 
+  padding: 12px 20px 12px 40px;
+}
+#imglogo
+{
+	background-color: white;
+	opacity:0.35;
+	width:25%;
+	height:5%;
+}
+
+</style>
+</head>
+<body background="{{url_for('static',filename='library7.jpg')}}">
+
+<div id="imglogo"><img src="{{url_for('static',filename='elibrary1-logo.png')}}" align="center" alt="Smiley face" ></div>
+
+<form id="ind1" align="center" method="get"><br><br><br><br><br><br>
+  <input id="Text1" name="inputbox" type="text" placeholder="Search.." ><br><br>
+  <button style="width:7%;height:80%;" onClick="testResults(this.form)">Explore</button>
+</form>
+<SCRIPT LANGUAGE="JavaScript">
+function testResults (form) {
+    var TestVar = form.inputbox.value;
+    if(TestVar=="python"||TestVar=="Python"||TestVar=="PYTHON"||TestVar=="Books")
+	{
+	document.getElementById("ind1").action ="/books"
+	}
+	else
+	{
+	document.getElementById("ind1").action ="/nores"
+	}
+}
+</SCRIPT>
+</body>
+</html>
